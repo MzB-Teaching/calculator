@@ -40,25 +40,33 @@ def ask_number():
     num = int(input("Enter an operand: ")) 
     return num
 
+"""Some debugging"""
+DO_DEBUG=1
+
 """Lets start by getting all necessary information"""
 operation=ask_op()
 num1=ask_number()
 num2=ask_number()
 
+if DO_DEBUG:
+    print("Number 1: ", num1,
+          "Number 2: ", num2,
+          "operation :", operation)
+
 """Now evaluate what operation the user wants, and run the consecutive function"""
-if operation == 1:
+if operation == '1':
     print(num1, "+", num2, "=",
                     add(num1, num2))
 
-elif operation == 2:
+elif operation == '2':
     print(num1, "-", num2, "=",
                     subtract(num1, num2))
 
-elif operation == 3:
+elif operation == '3':
     print(num1, "*", num2, "=",
                     multiply(num1, num2))
 
-elif operation == 4:
+elif operation == '4':
     print(num1, "/", num2, "=",
                     divide(num1, num2))
 else:
