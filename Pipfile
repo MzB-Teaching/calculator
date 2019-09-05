@@ -6,8 +6,8 @@ verify_ssl = true
 [dev-packages]
 
 [packages]
-nose = "*"
 flake8 = "*"
+nose = "*"
 
 [requires]
 python_version = "3.6"
