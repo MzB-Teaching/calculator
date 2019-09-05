@@ -23,4 +23,12 @@ If one quickly checks out the Pipfile you'll see a reference to a package called
 This is our test-framework in this case, again for almost every language you will find there is a multitude of different frameworks for everything.
 ** Javascript (and unfortunately by extension also NodeJS) are really suffering really from this, where for almost every common dev problem there exists (without a joke) 100s of packages/framework and their interdependencies are beyond a joke. Yes package-managers can mitigate some of this cruft but imho when the total number of (so-called "established") frameworks is in the high thousands it is almost like trying to re-invent the wheel again and again and expecting different results ;)
 
-* Oh yes: the tests are not working currently, my last few commits were mostly, cleanup, refactoring and documentation ;)
+~~* Oh yes: the tests are not working currently, my last few commits were mostly, cleanup, refactoring and documentation ;)~~
+* last but not least, to run test, simply in the main directory of this app, run ```nosetests test/test_calculator.py```
+
+### A note from the author
+None of this is probably what some might call *pretty*
+It's not supposed to be!
+It's about learning the right basic best-practices and certain behaviours right of the bat.
+> Teach a man to fish and he'll feed himself
+> Teach a man to fish well and he'll feed his whole community
