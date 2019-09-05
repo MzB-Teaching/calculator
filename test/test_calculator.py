@@ -11,6 +11,8 @@ __email__= "smzb@mitos-kalandiel.me"
 class Test_Calculator(unittest.TestCase):
 
     def test_add_returns_correct_result(self):
+        """Simple, make an instance of the app and test that 2+2=4"""
         calc = Calculator()
         result = calc.add(2,2)
         self.assertEqual(4, result)
+
