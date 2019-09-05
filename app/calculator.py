@@ -42,34 +42,49 @@ class Calculator(object):
         num = int(input("Enter an operand: ")) 
         return num
 
-    """Some debugging"""
-    DO_DEBUG=1
+    def init():
+        """This should really only be run when "interactive"!"""
+        gOperation=ask_op()
+        gNum1=ask_number()
+        gNum2=ask_number()
+        return
 
-    """Lets start by getting all necessary information"""
-    operation=ask_op()
-    num1=ask_number()
-    num2=ask_number()
+    def eval_operation(self, operation)
+
+    """Really, this is all that is required to bootstrap python, nothing?!!!????!
+    this is madness lol"""
+
+    """Debug flag"""
+    DO_DEBUG=0
+
+    """Lets start with some global vars (bad juju but it'll do just now)
+    Did I mention I don't like pythons bootstrapping?"""
+    gOperation=0
+    gNum1=0
+    gNum2=0
 
     if DO_DEBUG:
-        print("Number 1: ", num1,
-              "Number 2: ", num2,
-              "operation :", operation)
+        print("Number 1: ", gNum1,
+              "Number 2: ", gNum2,
+              "operation :", gOperation)
 
     """Now evaluate what operation the user wants, and run the consecutive function"""
-    if operation == '1':
-        print(num1, "+", num2, "=",
-              add(num1, num2))
+    if gOperation == '1':
+        print(gNum1, "+", gNum2, "=",
+              add(gNum1, gNum2))
 
-    elif operation == '2':
-        print(num1, "-", num2, "=",
-              subtract(num1, num2))
+    elif gOperation == '2':
+        print(gNum1, "-", gNum2, "=",
+              subtract(gNum1, gNum2))
 
-    elif operation == '3':
-        print(num1, "*", num2, "=",
-              multiply(num1, num2))
+    elif gOperation == '3':
+        print(gNum1, "*", gNum2, "=",
+              multiply(gNum1, gNum2))
 
-    elif operation == '4':
-        print(num1, "/", num2, "=",
-              divide(num1, num2))
+    elif gOperation == '4':
+        print(gNum1, "/", gNum2, "=",
+              divide(gNum1, gNum2))
+    elif gOperation == '0':
+        return
     else:
         print("Invalid operation")
