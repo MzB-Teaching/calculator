@@ -6,21 +6,21 @@ __author__= "Sebastian Meier zu Biesen"
 __copyright__= "2000-2019 by MzB Solutions"
 __email__= "smzb@mitos-kalandiel.me"
 
-class Calculator():
+class Calculator(object):
 
-    def add(num1, num2):
+    def add(self, num1, num2):
         """This functions adds two numbers"""
         return num1 + num2
 
-    def subtract(num1, num2):
+    def subtract(self, num1, num2):
         """This is a simple subtraction function"""
         return num1 - num2
 
-    def multiply(num1, num2):
+    def multiply(self, num1, num2):
         """Again a simple multiplication"""
         return num1 * num2
 
-    def divide(num1, num2):
+    def divide(self, num1, num2):
         """division function
         todo: (smzb/js) make division by 0 impossible"""
         return num1 / num2
