@@ -49,7 +49,29 @@ class Calculator(object):
         gNum2=ask_number()
         return
 
-    def eval_operation(self, operation)
+    def eval_operation(self, operation):
+        """..."""
+        """Now evaluate what operation the user wants, and run the consecutive function"""
+        if gOperation == '1':
+            print(gNum1, "+", gNum2, "=",
+                  add(gNum1, gNum2))
+
+        elif gOperation == '2':
+            print(gNum1, "-", gNum2, "=",
+                  subtract(gNum1, gNum2))
+
+        elif gOperation == '3':
+            print(gNum1, "*", gNum2, "=",
+                  multiply(gNum1, gNum2))
+
+        elif gOperation == '4':
+            print(gNum1, "/", gNum2, "=",
+                  divide(gNum1, gNum2))
+        elif gOperation == '0':
+            return
+        else:
+            print("Invalid operation")
+
 
     """Really, this is all that is required to bootstrap python, nothing?!!!????!
     this is madness lol"""
@@ -68,23 +90,4 @@ class Calculator(object):
               "Number 2: ", gNum2,
               "operation :", gOperation)
 
-    """Now evaluate what operation the user wants, and run the consecutive function"""
-    if gOperation == '1':
-        print(gNum1, "+", gNum2, "=",
-              add(gNum1, gNum2))
-
-    elif gOperation == '2':
-        print(gNum1, "-", gNum2, "=",
-              subtract(gNum1, gNum2))
-
-    elif gOperation == '3':
-        print(gNum1, "*", gNum2, "=",
-              multiply(gNum1, gNum2))
-
-    elif gOperation == '4':
-        print(gNum1, "/", gNum2, "=",
-              divide(gNum1, gNum2))
-    elif gOperation == '0':
-        return
-    else:
-        print("Invalid operation")
+    
