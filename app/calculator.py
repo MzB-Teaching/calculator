@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 """This is a simple python3 calculator for demonstration purposes
 some to-do's but we'll get to that"""
+from app.cmd_parse import CmdParser
 
 __author__= "Sebastian Meier zu Biesen"
 __copyright__= "2000-2019 by MzB Solutions"
