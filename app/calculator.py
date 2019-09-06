@@ -77,6 +77,9 @@ class Calculator(object):
     """Really, this is all that is required to bootstrap python, nothing?!!!????!
     this is madness lol"""
 
+    arguments = ['Interactve','Operation','Num1','Num2']
+    live_args = CmdParser(arguments)
+
     """Debug flag"""
     DO_DEBUG=0
 
