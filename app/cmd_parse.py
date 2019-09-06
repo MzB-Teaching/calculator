@@ -3,11 +3,15 @@
 Again let's use an establised standard for this sort of thing"""
 import argparse
 
+__author__= "Sebastian Meier zu Biesen"
+__copyright__= "2000-2019 by MzB Solutions"
+__email__= "smzb@mitos-kalandiel.me"
+
 class CmdParser(object):
     def __init__(self, arguments):
         """lets deal with required arguments"""
         print(arguments)
-        self.is_interactive=0
+        
         
     """Build the parser and describe it to the outside world"""
     my_parser = argparse.ArgumentParser(prog='calculator',description='A simple interactive/non-interactive calculator')
@@ -15,10 +19,10 @@ class CmdParser(object):
     """Add an argument
     In this case, we a flag, wether the app runs interactively or not"""
     my_parser.add_argument('-i',
-        '--interactive',
-        metavar='Interactive',
-        action='store_true',
-        help='When interactive the app will ask your for input, when non-interactive, the app expects all input to be supplied via cmdline')
+                           '--interactive',
+                           dest='Interactive',
+                           action='store_true',
+                           help='When interactive the app will ask your for input, when non-interactive, the app expects all input to be supplied via cmdline')
     my_parser.add_argument('-o',
                            '--operation',
                            type=str,
