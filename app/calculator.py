@@ -41,7 +41,7 @@ class Calculator(object):
 
     def ask_number():
         """Get a number from the user"""
-        num = int(input("Enter an operand: ")) 
+        num = int(input("Enter an operand: "))
         return num
 
     def init():
@@ -49,9 +49,9 @@ class Calculator(object):
         global gOperation
         global gNum1
         global gNum2
-        gOperation = ask_op()
-        gNum1 = ask_number()
-        gNum2 = ask_number()
+        gOperation = Calculator.ask_op()
+        gNum1 = Calculator.ask_number()
+        gNum2 = Calculator.ask_number()
         return
 
     def eval_operation(self, operation):
@@ -59,29 +59,28 @@ class Calculator(object):
         """Now evaluate what operation the user wants, and run the consecutive function"""
         if gOperation == '1':
             print(gNum1, "+", gNum2, "=",
-                  add(gNum1, gNum2))
+                  Calculator.add(gNum1, gNum2))
 
         elif gOperation == '2':
             print(gNum1, "-", gNum2, "=",
-                  subtract(gNum1, gNum2))
+                  Calculator.subtract(gNum1, gNum2))
 
         elif gOperation == '3':
             print(gNum1, "*", gNum2, "=",
-                  multiply(gNum1, gNum2))
+                  Calculator.multiply(gNum1, gNum2))
 
         elif gOperation == '4':
             print(gNum1, "/", gNum2, "=",
-                  divide(gNum1, gNum2))
+                  Calculator.divide(gNum1, gNum2))
         elif gOperation == '0':
             return
         else:
             print("Invalid operation")
 
-
     """Really, this is all that is required to bootstrap python, nothing?!!!????!
     this is madness lol"""
 
-    arguments = ['Interactive','Operation', 'Num1', 'Num2']
+    arguments = ['Interactive', 'Operation', 'Num1', 'Num2']
     live_args = CmdParser(arguments)
 
     """Debug flag"""
