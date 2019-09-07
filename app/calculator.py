@@ -3,9 +3,10 @@
 some to-do's but we'll get to that"""
 from ext.cmd_parse import CmdParser
 
-__author__= "Sebastian Meier zu Biesen"
-__copyright__= "2000-2019 by MzB Solutions"
-__email__= "smzb@mitos-kalandiel.me"
+__author__ = "Sebastian Meier zu Biesen"
+__copyright__ = "2000-2019 by MzB Solutions"
+__email__ = "smzb@mitos-kalandiel.me"
+
 
 class Calculator(object):
 
@@ -45,9 +46,12 @@ class Calculator(object):
 
     def init():
         """This should really only be run when "interactive"!"""
-        gOperation=ask_op()
-        gNum1=ask_number()
-        gNum2=ask_number()
+        global gOperation
+        global gNum1
+        global gNum2
+        gOperation = ask_op()
+        gNum1 = ask_number()
+        gNum2 = ask_number()
         return
 
     def eval_operation(self, operation):
@@ -77,21 +81,19 @@ class Calculator(object):
     """Really, this is all that is required to bootstrap python, nothing?!!!????!
     this is madness lol"""
 
-    arguments = ['Interactve','Operation','Num1','Num2']
+    arguments = ['Interactive','Operation', 'Num1', 'Num2']
     live_args = CmdParser(arguments)
 
     """Debug flag"""
-    DO_DEBUG=0
+    DO_DEBUG = 0
 
     """Lets start with some global vars (bad juju but it'll do just now)
     Did I mention I don't like pythons bootstrapping?"""
-    gOperation=0
-    gNum1=0
-    gNum2=0
+    gOperation = 0
+    gNum1 = 0
+    gNum2 = 0
 
     if DO_DEBUG:
         print("Number 1: ", gNum1,
               "Number 2: ", gNum2,
               "operation :", gOperation)
-
-    
