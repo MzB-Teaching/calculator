@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 """These are simply unit tests to demonstrate the facility
-This is by no means meant to be comprehensive"""
+This is by no means meant to be comprehensive
+TODO: (smzb) we need to also test the failures of certain/all operations"""
 import unittest
 from app.calculator import Calculator
 
