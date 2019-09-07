@@ -1,10 +1,12 @@
 #!/usr/bin/env python3
 """This is a simple python3 calculator for demonstration purposes
 some to-do's but we'll get to that"""
+from ext.cmd_parse import CmdParser
 
-__author__= "Sebastian Meier zu Biesen"
-__copyright__= "2000-2019 by MzB Solutions"
-__email__= "smzb@mitos-kalandiel.me"
+__author__ = "Sebastian Meier zu Biesen"
+__copyright__ = "2000-2019 by MzB Solutions"
+__email__ = "smzb@mitos-kalandiel.me"
+
 
 class Calculator(object):
 
@@ -39,55 +41,59 @@ class Calculator(object):
 
     def ask_number():
         """Get a number from the user"""
-        num = int(input("Enter an operand: ")) 
+        num = int(input("Enter an operand: "))
         return num
 
     def init():
         """This should really only be run when "interactive"!"""
-        gOperation=ask_op()
-        gNum1=ask_number()
-        gNum2=ask_number()
+        global gOperation
+        global gNum1
+        global gNum2
+        gOperation = Calculator.ask_op()
+        gNum1 = Calculator.ask_number()
+        gNum2 = Calculator.ask_number()
         return
 
     def eval_operation(self, operation):
         """..."""
-        """Now evaluate what operation the user wants, and run the consecutive function"""
+        """Now evaluate what operation the user wants,
+        and run the consecutive function"""
         if gOperation == '1':
             print(gNum1, "+", gNum2, "=",
-                  add(gNum1, gNum2))
+                  Calculator.add(gNum1, gNum2))
 
         elif gOperation == '2':
             print(gNum1, "-", gNum2, "=",
-                  subtract(gNum1, gNum2))
+                  Calculator.subtract(gNum1, gNum2))
 
         elif gOperation == '3':
             print(gNum1, "*", gNum2, "=",
-                  multiply(gNum1, gNum2))
+                  Calculator.multiply(gNum1, gNum2))
 
         elif gOperation == '4':
             print(gNum1, "/", gNum2, "=",
-                  divide(gNum1, gNum2))
+                  Calculator.divide(gNum1, gNum2))
         elif gOperation == '0':
             return
         else:
             print("Invalid operation")
 
-
     """Really, this is all that is required to bootstrap python, nothing?!!!????!
     this is madness lol"""
 
+    arguments = ['Interactive', 'Operation', 'Num1', 'Num2']
+    live_args = CmdParser(arguments)
+
     """Debug flag"""
-    DO_DEBUG=0
+    DO_DEBUG = 0
 
     """Lets start with some global vars (bad juju but it'll do just now)
     Did I mention I don't like pythons bootstrapping?"""
-    gOperation=0
-    gNum1=0
-    gNum2=0
+    gOperation = 0
+    gNum1 = 0
+    gNum2 = 0
 
     if DO_DEBUG:
         print("Number 1: ", gNum1,
               "Number 2: ", gNum2,
               "operation :", gOperation)
-
-    
