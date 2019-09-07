@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """This is a simple python3 calculator for demonstration purposes
 some to-do's but we'll get to that"""
-from ext.cmd_parse import CmdParser
+from app.ext.cmd_parser import CmdParser
 
 __author__ = "Sebastian Meier zu Biesen"
 __copyright__ = "2000-2019 by MzB Solutions"
@@ -80,12 +80,16 @@ class Calculator(object):
 
     """Really, this is all that is required to bootstrap python, nothing?!!!????!
     this is madness lol"""
-
-    arguments = ['Interactive', 'Operation', 'Num1', 'Num2']
-    live_args = CmdParser(arguments)
+    def main():
+        global live_args
+        """Main program "loop" """
+        arguments = ['Interactive', 'Operation', 'Num1', 'Num2']
+        live_args = CmdParser(arguments)
 
     """Debug flag"""
     DO_DEBUG = 0
+
+    live_args=0
 
     """Lets start with some global vars (bad juju but it'll do just now)
     Did I mention I don't like pythons bootstrapping?"""
@@ -97,3 +101,5 @@ class Calculator(object):
         print("Number 1: ", gNum1,
               "Number 2: ", gNum2,
               "operation :", gOperation)
+
+    main()
