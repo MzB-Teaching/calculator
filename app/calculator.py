@@ -56,7 +56,8 @@ class Calculator(object):
 
     def eval_operation(self, operation):
         """..."""
-        """Now evaluate what operation the user wants, and run the consecutive function"""
+        """Now evaluate what operation the user wants,
+        and run the consecutive function"""
         if gOperation == '1':
             print(gNum1, "+", gNum2, "=",
                   Calculator.add(gNum1, gNum2))
