@@ -10,6 +10,18 @@ __email__ = "smzb@mitos-kalandiel.me"
 class Calculator(object):
 
     @property
+    def isDebug(self):
+        return self._isDebug
+    
+    @isDebug.setter
+    def isDebug(self, bDebug):
+        self._isDebug = bDebug
+    
+    @isDebug.deleter
+    def isDebug(self):
+        del self._isDebug
+    
+    @property
     def isInteractive(self):
         return self._isInteractive
 
@@ -62,7 +74,8 @@ class Calculator(object):
         del self._Num2
 
     def __init__(self):
-        self._isInteractive = None
+        self._isDebug = False
+        self._isInteractive = False
         self._Operation = None
         self._Num1 = None
         self._Num2 = None
@@ -84,7 +97,7 @@ class Calculator(object):
         todo: (smzb/js) make division by 0 impossible"""
         return self._Num1 / self._Num2
 
-    def ask_op():
+    def ask_op(self):
         """Lets ask what the user wants to do"""
         print("Please select operation -\n"
               "1. Add\n"
@@ -92,7 +105,8 @@ class Calculator(object):
               "3. Multiply\n"
               "4. Divide\n")
         # Take input from the user
-        return input("Select operations from 1, 2, 3, 4 :")
+        result = input("Select operations from 1, 2, 3, 4 :")
+        return result
 
     def ask_number():
         """Get a number from the user"""
@@ -102,22 +116,22 @@ class Calculator(object):
     def eval_operation(self):
         """Now evaluate what operation the user wants,
         and run the consecutive function"""
-        if self.Operation() == '1':
+        if self._Operation == '1':
             print(self._Num1, "+", self._Num2, "=",
                   Calculator.add())
 
-        elif self.Operation() == '2':
+        elif self._Operation == '2':
             print(self._Num1, "-", self._Num2, "=",
                   Calculator.subtract())
 
-        elif self.Operation() == '3':
+        elif self._Operation == '3':
             print(self._Num1, "*", self._Num2, "=",
                   Calculator.multiply())
 
-        elif self.Operation() == '4':
+        elif self._Operation == '4':
             print(self._Num1, "/", self._Num2, "=",
                   Calculator.divide())
-        elif self.Operation() == '0':
+        elif self._Operation == '0':
             return
         else:
             print("Invalid operation")
