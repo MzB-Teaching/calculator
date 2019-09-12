@@ -1,7 +1,6 @@
 #!/usr/bin/env python3
 """This is a simple python3 calculator for demonstration purposes
 some to-do's but we'll get to that"""
-from ext.cmd_parser import CmdParser
 
 __author__ = "Sebastian Meier zu Biesen"
 __copyright__ = "2000-2019 by MzB Solutions"
@@ -10,22 +9,80 @@ __email__ = "smzb@mitos-kalandiel.me"
 
 class Calculator(object):
 
-    def add(self, num1, num2):
+    @property
+    def isInteractive(self):
+        return self._isInteractive
+
+    @isInteractive.setter()
+    def isInteractive(self, bInteractive):
+        self._isInteractive = bInteractive
+
+    @isInteractive.deleter
+    def isInteractive(self):
+        del self._isInteractive
+
+    @property
+    def Operation(self):
+        return self._Operation
+
+    @Operation.setter
+    def Operation(self, iOperation):
+        self._Operation = iOperation
+
+    @Operation.deleter
+    def Operation(self):
+        del self._Operation
+
+    @property
+    def Num1(self):
+        return self._Num1
+
+    @Num1.setter
+    def Num1(self, iNum):
+        if not isinstance(iNum, int):
+            raise TypeError
+        self._Num1 = iNum
+    
+    @Num1.deleter
+    def Num1(self):
+        del self._Num1
+    
+    @property
+    def Num2(self):
+        return self._Num2
+
+    @Num2.setter
+    def Num2(self, iNum):
+        if not isinstance(iNum, int):
+            raise TypeError
+        self._Num2 = iNum
+
+    @Num2.deleter
+    def Num2(self):
+        del self._Num2
+
+    def __init__(self):
+        self._isInteractive = None
+        self._Operation = None
+        self._Num1 = None
+        self._Num2 = None
+
+    def add(self):
         """This functions adds two numbers"""
-        return num1 + num2
+        return self._Num1 + self._Num2
 
-    def subtract(self, num1, num2):
+    def subtract(self):
         """This is a simple subtraction function"""
-        return num1 - num2
+        return self._Num1 - self._Num2
 
-    def multiply(self, num1, num2):
+    def multiply(self):
         """Again a simple multiplication"""
-        return num1 * num2
+        return self._Num1 * self._Num2
 
-    def divide(self, num1, num2):
+    def divide(self):
         """division function
         todo: (smzb/js) make division by 0 impossible"""
-        return num1 / num2
+        return self._Num1 / self._Num2
 
     def ask_op():
         """Lets ask what the user wants to do"""
@@ -34,75 +91,33 @@ class Calculator(object):
               "2. Subtract\n"
               "3. Multiply\n"
               "4. Divide\n")
-
         # Take input from the user
-        op = input("Select operations form 1, 2, 3, 4 :")
-        return op
+        return input("Select operations from 1, 2, 3, 4 :")
 
     def ask_number():
         """Get a number from the user"""
         num = int(input("Enter an operand: "))
         return num
 
-    def init():
-        """This should really only be run when "interactive"!"""
-        global gOperation
-        global gNum1
-        global gNum2
-        gOperation = Calculator.ask_op()
-        gNum1 = Calculator.ask_number()
-        gNum2 = Calculator.ask_number()
-        return
-
-    def eval_operation(self, operation):
-        """..."""
+    def eval_operation(self):
         """Now evaluate what operation the user wants,
         and run the consecutive function"""
-        if gOperation == '1':
-            print(gNum1, "+", gNum2, "=",
-                  Calculator.add(gNum1, gNum2))
+        if self.Operation() == '1':
+            print(self._Num1, "+", self._Num2, "=",
+                  Calculator.add())
 
-        elif gOperation == '2':
-            print(gNum1, "-", gNum2, "=",
-                  Calculator.subtract(gNum1, gNum2))
+        elif self.Operation() == '2':
+            print(self._Num1, "-", self._Num2, "=",
+                  Calculator.subtract())
 
-        elif gOperation == '3':
-            print(gNum1, "*", gNum2, "=",
-                  Calculator.multiply(gNum1, gNum2))
+        elif self.Operation() == '3':
+            print(self._Num1, "*", self._Num2, "=",
+                  Calculator.multiply())
 
-        elif gOperation == '4':
-            print(gNum1, "/", gNum2, "=",
-                  Calculator.divide(gNum1, gNum2))
-        elif gOperation == '0':
+        elif self.Operation() == '4':
+            print(self._Num1, "/", self._Num2, "=",
+                  Calculator.divide())
+        elif self.Operation() == '0':
             return
         else:
             print("Invalid operation")
-
-    def main():
-        global live_args
-        """Main program "loop" """
-        arguments = {
-            "Interactive": 0,
-            "Operation": 0,
-            "Num1": 0,
-            "Num2": 0
-            }
-        live_args = CmdParser(arguments)
-
-    """Debug flag"""
-    DO_DEBUG = 0
-
-    live_args = 0
-
-    """Lets start with some global vars (bad juju but it'll do just now)
-    Did I mention I don't like pythons bootstrapping?"""
-    gOperation = 0
-    gNum1 = 0
-    gNum2 = 0
-
-    if DO_DEBUG:
-        print("Number 1: ", gNum1,
-              "Number 2: ", gNum2,
-              "operation :", gOperation)
-
-    main()
