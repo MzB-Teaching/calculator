@@ -13,7 +13,7 @@ class Calculator(object):
     def isInteractive(self):
         return self._isInteractive
 
-    @isInteractive.setter()
+    @isInteractive.setter
     def isInteractive(self, bInteractive):
         self._isInteractive = bInteractive
 
