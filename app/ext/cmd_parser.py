@@ -11,9 +11,7 @@ __email__ = "smzb@mitos-kalandiel.me"
 class CmdParser(object):
     def __init__(self, args):
         """lets deal with required arguments"""
-        gobal arguments
-        arguments=args
-
+        self.arguments = args
 
     """A stupid hack to prevent a line to long issue when creating
     the parser further down the line"""
@@ -34,13 +32,20 @@ class CmdParser(object):
                                    all input to be supplied via cmdline')
     my_parser.add_argument('-o',
                            '--operation',
+                           dest='Operation',
                            type=str,
                            help='Operation can be on of the following : add, \
-                               sub, mul, div')
+                               sub, mul, div ')
+    my_parser.add_argument('-n1',
+                           '--Number1',
+                           dest='Num1',
+                           type=int,
+                           help='The first (integer) number in our calculation')
 
     """Execute the parser"""
     argParse = my_parser.parse_args()
 
     arguments = dict()
     arguments["Interactive"] = argParse.Interactive
+    arguments["Operation"] = argParse.Operation
     print(arguments)
