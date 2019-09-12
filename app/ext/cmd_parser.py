@@ -41,6 +41,11 @@ class CmdParser(object):
                            dest='Num1',
                            type=int,
                            help='The first (integer) number in our calculation')
+    my_parser.add_argument('-n2',
+                           '--Number2',
+                           dest='Num2',
+                           type=int,
+                           help='The second (integer) number in our calculation')
 
     """Execute the parser"""
     argParse = my_parser.parse_args()
@@ -48,4 +53,7 @@ class CmdParser(object):
     arguments = dict()
     arguments["Interactive"] = argParse.Interactive
     arguments["Operation"] = argParse.Operation
+    arguments["Num1"] = argParse.Num1
+    arguments["Num2"] = argParse.Num2
+    
     print(arguments)
