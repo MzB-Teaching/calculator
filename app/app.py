@@ -2,6 +2,7 @@
 """This is the app wrapper for the calculator
 here we process command line parameters"""
 import argparse
+import sys
 from mods.calculator import Calculator
 
 __author__ = "Sebastian Meier zu Biesen"
@@ -10,11 +11,6 @@ __email__ = "smzb@mitos-kalandiel.me"
 
 
 class App(object):
-
-    doDebug = True
-
-    def __init__(self):
-        print("Test2")
 
     def main():
         """A stupid hack to prevent a line to long issue when creating
@@ -62,6 +58,11 @@ class App(object):
                                type=int,
                                help='The second (integer) number in our \
                                      calculation')
+        """Let's check if there's any arguments being passed"""
+        print("Number of Parameters : ", len(sys.argv))
+        if len(sys.argv) == 1:
+            my_parser.print_help()
+            sys.exit()
         """Execute the parser"""
         argParser = my_parser.parse_args()
         calc = Calculator()
