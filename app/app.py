@@ -59,7 +59,6 @@ class App(object):
                                help='The second (integer) number in our \
                                      calculation')
         """Let's check if there's any arguments being passed"""
-        print("Number of Parameters : ", len(sys.argv))
         if len(sys.argv) == 1:
             my_parser.print_help()
             sys.exit()
@@ -78,6 +77,7 @@ class App(object):
             calc.Num2 = argParser.Num2
         calc.eval_operation()
         if calc.isDebug:
+            print("Number of Parameters : ", len(sys.argv))
             print("Debugging :", calc.isDebug)
             print("Interactive :", calc.isInteractive)
             print("Operation :", calc.Operation)
