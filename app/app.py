@@ -77,12 +77,12 @@ class App(object):
             calc.Num2 = argParser.Num2
         calc.eval_operation()
         if calc.isDebug:
-            print("Debugging : ", calc.isDebug)
-            print("Interactive : ", calc.isInteractive)
-            print("Operation : ", calc.Operation)
-            print("Number 1 : ", calc.Num1)
-            print("Number 2 : ", calc.Num2)
+            print("Debugging :", calc.isDebug)
+            print("Interactive :", calc.isInteractive)
+            print("Operation :", calc.Operation)
+            print("Number 1 :", calc.Num1)
+            print("Number 2 :", calc.Num2)
         pass
-    
+
     if __name__ == '__main__':
         main()

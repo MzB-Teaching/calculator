@@ -12,15 +12,15 @@ class Calculator(object):
     @property
     def isDebug(self):
         return self._isDebug
-    
+
     @isDebug.setter
     def isDebug(self, bDebug):
         self._isDebug = bDebug
-    
+
     @isDebug.deleter
     def isDebug(self):
         del self._isDebug
-    
+
     @property
     def isInteractive(self):
         return self._isInteractive
@@ -54,11 +54,11 @@ class Calculator(object):
         if not isinstance(iNum, int):
             raise TypeError
         self._Num1 = iNum
-    
+
     @Num1.deleter
     def Num1(self):
         del self._Num1
-    
+
     @property
     def Num2(self):
         return self._Num2
@@ -106,9 +106,9 @@ class Calculator(object):
               "4. Divide\n")
         # Take input from the user
         result = input("Select operations from 1, 2, 3, 4 :")
-        return result
+        return int(result)
 
-    def ask_number():
+    def ask_number(self):
         """Get a number from the user"""
         num = int(input("Enter an operand: "))
         return num
@@ -116,22 +116,22 @@ class Calculator(object):
     def eval_operation(self):
         """Now evaluate what operation the user wants,
         and run the consecutive function"""
-        if self._Operation == '1':
+        if self._Operation == 1:
             print(self._Num1, "+", self._Num2, "=",
-                  Calculator.add())
+                  Calculator.add(self))
 
-        elif self._Operation == '2':
+        elif self._Operation == 2:
             print(self._Num1, "-", self._Num2, "=",
-                  Calculator.subtract())
+                  Calculator.subtract(self))
 
-        elif self._Operation == '3':
+        elif self._Operation == 3:
             print(self._Num1, "*", self._Num2, "=",
-                  Calculator.multiply())
+                  Calculator.multiply(self))
 
-        elif self._Operation == '4':
+        elif self._Operation == 4:
             print(self._Num1, "/", self._Num2, "=",
-                  Calculator.divide())
-        elif self._Operation == '0':
+                  Calculator.divide(self))
+        elif self._Operation == 0:
             return
         else:
             print("Invalid operation")
