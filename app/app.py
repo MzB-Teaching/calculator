@@ -2,6 +2,7 @@
 """This is the app wrapper for the calculator
 here we process command line parameters"""
 import argparse
+import textwrap
 import sys
 from mods.calculator import Calculator
 
@@ -11,6 +12,8 @@ __email__ = "smzb@mitos-kalandiel.me"
 
 
 class App(object):
+    """The app class is essentially a wrapper
+    for the caluclator app. In here we simply parse command line arguments"""
 
     def main():
         """A stupid hack to prevent a line to long issue when creating
@@ -18,46 +21,47 @@ class App(object):
         desc = "A simple interactive/non-interactive calculator"
         """Build the parser and describe it to the outside world"""
         my_parser = argparse.ArgumentParser(prog="Calculator",
-                                            description=desc)
+                                            description=desc,
+                                            formatter_class=argparse.RawTextHelpFormatter)
         """Add an argument
          In this case, we a flag, wether the app runs interactively or not"""
+        my_parser.add_argument("-i",
+                              "--interactive",
+                              dest="Interactive",
+                              action='store_true',
+                              default=False,
+                              help=textwrap.dedent('''When interactive the app will ask your for
+input, when non-interactive, the app
+expects all input to be supplied via
+cmdline'''))
+        my_parser.add_argument("-o",
+                              "--operation",
+                              dest="Operation",
+                              type=int,
+                              help=textwrap.dedent('''Operation can be on of the following :
+1 = add
+2 = subtract
+3 = multiply
+4 = divide'''))
         my_parser.add_argument('-d',
                                '--debug',
                                dest='Debug',
                                action='store_true',
                                default=False,
-                               help='When debugging is enabled, the app will \
-                                   output extra information during execution')
-        my_parser.add_argument('-i',
-                               '--interactive',
-                               dest='Interactive',
-                               action='store_true',
-                               default=False,
-                               help='When interactive the app will ask your for \
-                                     input, when non-interactive, the app \
-                                     expects all input to be supplied via \
-                                     cmdline')
-        my_parser.add_argument('-o',
-                               '--operation',
-                               dest='Operation',
-                               type=int,
-                               help='Operation can be on of the following : \
-                                    1 = add \
-                                    2 = subtract \
-                                    3 = multiply \
-                                    4 = divide')
+                               help=textwrap.dedent('''When debugging is enabled, the app will
+output extra information during execution'''))
         my_parser.add_argument('-n1',
                                '--Number1',
                                dest='Num1',
                                type=int,
-                               help='The first (integer) number in our \
-                                     calculation')
+                               help=textwrap.dedent('''The first (integer) number in our
+calculation'''))
         my_parser.add_argument('-n2',
                                '--Number2',
                                dest='Num2',
                                type=int,
-                               help='The second (integer) number in our \
-                                     calculation')
+                               help=textwrap.dedent('''The second (integer) number in our \
+calculation'''))
         """Let's check if there's any arguments being passed"""
         if len(sys.argv) == 1:
             my_parser.print_help()
