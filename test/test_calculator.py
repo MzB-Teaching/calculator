@@ -3,7 +3,7 @@
 This is by no means meant to be comprehensive
 TODO: (smzb) we need to also test the failures of certain/all operations"""
 import unittest
-from app.calculator import Calculator
+from app.mods.calculator import Calculator
 
 __author__ = "Sebastian Meier zu Biesen"
 __copyright__ = "2000-2019 by MzB Solutions"
@@ -17,8 +17,18 @@ class Test_Calculator(unittest.TestCase):
 
     def test_add_returns_correct_result(self):
         """Simple, make an instance of the app and test that 2+2=4"""
-        result = self.calc.add(2, 2)
-        self.assertEqual(4, result)
+        self.calc.Num1 = 2
+        self.calc.Num2 = 3
+        result = self.calc.add()
+        self.assertEqual(5, result)
 
     def test_calculator_returns_error_message_if_both_args_not_numbers(self):
-        self.assertRaises(ValueError, self.calc.add, 'two', 'three')
+        self.calc.Num1 = "two"
+        self.calc.Num2 = "three"
+        self.assertRaises(ValueError, self.calc.add)
+        
+    def test_subtract_returns_correct_result(self):
+        self.calc.Num1 = 9
+        self.calc.Num2 = 18
+        result = self.calc.subtract()
+        self.assertEqual(-9, result)
